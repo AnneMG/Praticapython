@@ -1,0 +1,25 @@
+#programa que verifique a quantidade de acertos de uma prova com cinco questões, sabendo
+#que serão fornecidos pelo usuário as letras assinaladas em cada questão. Para isso será criado um vetor chamado
+#GABARITO com as seguintes respostas: A, B, B, D, E
+gabarito=['A','B','B','D','E']
+resp=[]
+erro=0
+acerto=0
+n=1
+
+#Entrada de dados
+for i in range (5):
+    resp.append(input(f'Informe a resposta para a questão {n} a seguir: '))
+    n+=1
+ #Verificar se a resposta digitada esta correta
+for i in range (len(resp)):
+    if resp[i].upper() == gabarito[i]:
+        acerto +=1
+    else:
+        erro +=1
+
+#saida dos dados
+print(f'As alternativas informadas na prova foram:{resp}')    
+print(f'O gabarito da prova para cada questão:')    
+print(gabarito)    
+print(f'A quantidade de acertos foi: {acerto} e a quantidade de erros foi: {erro}') 
