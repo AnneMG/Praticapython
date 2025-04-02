@@ -9,7 +9,7 @@ n=1
 
 #Entrada de dados
 for i in range (5):
-    resp.append(input(f'Informe a resposta para a questão {n} a seguir: '))
+    resp.append(input(f'Informe a resposta para a questão {n} a seguir: ').upper())
     n+=1
  #Verificar se a resposta digitada esta correta
 for i in range (len(resp)):
