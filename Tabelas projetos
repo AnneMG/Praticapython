@@ -1,0 +1,43 @@
+-- Tabela de Projetos
+CREATE TABLE Projetos (
+    ProjetoID INTEGER NOT NULL,
+    Nome VARCHAR(255) NOT NULL,
+    Descricao VARCHAR(255),
+    DataInicio DATE,
+    DataFimPrevista DATE,
+    DataFimReal DATE,
+    PRIMARY KEY(ProjetoID)
+);
+
+-- Tabela de Tarefas
+CREATE TABLE Tarefas (
+    TarefaID INTEGER NOT NULL,
+    ProjetoID INTEGER NOT NULL,
+    Nome VARCHAR(255) NOT NULL,
+    Descricao VARCHAR(255),
+    DataInicio DATE,
+    DataFimPrevista DATE,
+    DataFimReal DATE,
+    Status VARCHAR(20),
+    PRIMARY KEY(TarefaID),
+    FOREIGN KEY (ProjetoID) REFERENCES Projetos(ProjetoID)
+);
+
+-- Tabela de Usuários
+CREATE TABLE Usuarios (
+    UsuarioID INTEGER NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
+    PRIMARY KEY(UsuarioID)
+);
+
+-- Tabela de Ligação entre Usuários e Tarefas (para relacionamento muitos-para-muitos)
+CREATE TABLE Atribuicoes (
+    AtribuicaoID INTEGER AUTO_INCREMENT,
+    UsuarioID INTEGER NOT NULL,
+    TarefaID INTEGER NOT NULL,
+    DataAtribuicao DATE,
+    PRIMARY KEY(AtribuicaoID),
+    FOREIGN KEY (UsuarioID) REFERENCES Usuarios(UsuarioID),
+    FOREIGN KEY (TarefaID) REFERENCES Tarefas(TarefaID)
+);
